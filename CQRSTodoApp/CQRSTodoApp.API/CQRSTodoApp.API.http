@@ -1,0 +1,6 @@
+@CQRSTodoApp.API_HostAddress = http://localhost:5274
+
+GET {{CQRSTodoApp.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
