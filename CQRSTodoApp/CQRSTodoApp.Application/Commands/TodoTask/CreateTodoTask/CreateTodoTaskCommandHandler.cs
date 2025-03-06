@@ -1,4 +1,5 @@
-﻿using CQRSTodoApp.Domain.Infrastructure;
+﻿using AutoMapper;
+using CQRSTodoApp.Domain.Infrastructure;
 using MediatR;
 
 namespace CQRSTodoApp.Application.Commands.TodoTask.CreateTodoTask
@@ -6,19 +7,17 @@ namespace CQRSTodoApp.Application.Commands.TodoTask.CreateTodoTask
     public class CreateTodoTaskCommandHandler : IRequestHandler<CreateTodoTaskCommand>
     {
         private readonly IToDoTaskRepository _toDoTaskRepository;
-        public CreateTodoTaskCommandHandler(IToDoTaskRepository toDoTaskRepository)
+        private readonly IMapper _mapper;
+        public CreateTodoTaskCommandHandler(IToDoTaskRepository toDoTaskRepository, IMapper mapper)
         {
             _toDoTaskRepository = toDoTaskRepository;
+            _mapper = mapper;
         }
 
         public async Task Handle(CreateTodoTaskCommand request, CancellationToken cancellationToken)
         {
-            var toDoTask = new Domain.Models.TodoTask()
-            {
-                Content = request.Content,
-                Done = false,
-            };
-            await _toDoTaskRepository.CreateToDoTaskAsync(toDoTask);
+            var mappedNewTodoTask = _mapper.Map<Domain.Models.TodoTask>(request.newTodoTask);
+            await _toDoTaskRepository.CreateToDoTaskAsync(mappedNewTodoTask);
         }
     }
 }

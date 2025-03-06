@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using CQRSTodoApp.Application.Dto.TodoTask;
+using MediatR;
 
 namespace CQRSTodoApp.Application.Queries.TodoTask.GetAllTodoTasks
 {
-    public record GetAllTodoTasksQuery : IRequest<List<Domain.Models.TodoTask>>;
+    public record GetAllTodoTasksQuery : IRequest<List<RetrieveTodoTaskDto>>;
 }

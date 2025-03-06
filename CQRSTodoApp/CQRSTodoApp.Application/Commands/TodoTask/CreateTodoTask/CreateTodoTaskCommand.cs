@@ -1,6 +1,7 @@
-﻿using MediatR;
+﻿using CQRSTodoApp.Application.Dto.TodoTask;
+using MediatR;
 
 namespace CQRSTodoApp.Application.Commands.TodoTask.CreateTodoTask
 {
-    public record CreateTodoTaskCommand(string Content) : IRequest;
+    public record CreateTodoTaskCommand(CreateTodoTaskDto newTodoTask) : IRequest;
 }

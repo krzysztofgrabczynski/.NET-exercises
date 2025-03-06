@@ -38,7 +38,7 @@ namespace CQRSTodoApp.API.Controllers
         [HttpPost("create-task")]
         public async Task<IActionResult> CreateTodoTask([FromBody] CreateTodoTaskDto newTodoTask)
         {
-            var command = new CreateTodoTaskCommand(newTodoTask.Content);
+            var command = new CreateTodoTaskCommand(newTodoTask);
             await _sender.Send(command);
             return Ok();
         }
