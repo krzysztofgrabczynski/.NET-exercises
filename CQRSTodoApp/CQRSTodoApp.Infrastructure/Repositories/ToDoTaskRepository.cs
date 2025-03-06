@@ -13,33 +13,33 @@ namespace CQRSTodoApp.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task CreateToDoTaskAsync(ToDoTask toDoTask)
+        public async Task CreateToDoTaskAsync(TodoTask toDoTask)
         {
-            await _context.ToDoTasks.AddAsync(toDoTask);
+            await _context.TodoTasks.AddAsync(toDoTask);
             await _context.SaveChangesAsync();
         }
 
         public async Task<bool> DeleteToDoTaskByIdAsync(int toDoTaskId)
         {
-            var task = await _context.ToDoTasks.FirstOrDefaultAsync(t => t.Id == toDoTaskId);
+            var task = await _context.TodoTasks.FirstOrDefaultAsync(t => t.Id == toDoTaskId);
             if (task is null)
             {
                 return false;
             }
 
-            _context.ToDoTasks.Remove(task);
+            _context.TodoTasks.Remove(task);
             await _context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<List<ToDoTask>> GetAllToDoTasksAsync()
+        public async Task<List<TodoTask>> GetAllToDoTasksAsync()
         {
-            return await _context.ToDoTasks.ToListAsync();
+            return await _context.TodoTasks.ToListAsync();
         }
 
-        public Task<ToDoTask?> GetToDoTaskByIdAsync(int toDoTaskId)
+        public Task<TodoTask?> GetToDoTaskByIdAsync(int toDoTaskId)
         {
-            return _context.ToDoTasks.FirstOrDefaultAsync(t => t.Id == toDoTaskId);
+            return _context.TodoTasks.FirstOrDefaultAsync(t => t.Id == toDoTaskId);
         }
     }
 }

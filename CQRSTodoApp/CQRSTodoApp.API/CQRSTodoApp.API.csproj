@@ -20,8 +20,4 @@
     <ProjectReference Include="..\CQRSTodoApp.Infrastructure\CQRSTodoApp.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

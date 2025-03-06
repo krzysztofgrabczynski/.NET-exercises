@@ -5,7 +5,7 @@ namespace CQRSTodoApp.Infrastructure
 {
     public class Context : DbContext
     {
-        public DbSet<ToDoTask> ToDoTasks { get; set; }
+        public DbSet<TodoTask> TodoTasks { get; set; }
 
         public Context(DbContextOptions<Context> options) : base(options)
         {

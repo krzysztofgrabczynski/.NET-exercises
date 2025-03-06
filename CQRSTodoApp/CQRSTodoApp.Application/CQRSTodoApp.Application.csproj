@@ -15,8 +15,4 @@
     <ProjectReference Include="..\CQRSTodoApp.Domain\CQRSTodoApp.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Queries\" />
-  </ItemGroup>
-
 </Project>
