@@ -41,5 +41,11 @@ namespace CQRSTodoApp.Infrastructure.Repositories
         {
             return _context.TodoTasks.FirstOrDefaultAsync(t => t.Id == toDoTaskId);
         }
+
+        public async Task UpdateToDoTaskAsync(TodoTask updatedToDoTask)
+        {
+            _context.TodoTasks.Update(updatedToDoTask);
+            await _context.SaveChangesAsync();
+        }
     }
 }

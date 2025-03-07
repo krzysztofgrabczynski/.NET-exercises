@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CQRSTodoApp.Application.Dto.TodoTask;
-using CQRSTodoApp.Application.Exceptions.TodoTask;
+using CQRSTodoApp.Domain.Exceptions.TodoTask;
 using CQRSTodoApp.Domain.Infrastructure;
 using MediatR;
 

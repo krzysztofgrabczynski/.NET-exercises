@@ -5,6 +5,7 @@ using CQRSTodoApp.Application.Queries.TodoTask.GetAllTodoTasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using CQRSTodoApp.Application.Dto.TodoTask;
+using CQRSTodoApp.Application.Commands.TodoTask.UpdateTodoTask;
 
 namespace CQRSTodoApp.API.Controllers
 {
@@ -47,6 +48,14 @@ namespace CQRSTodoApp.API.Controllers
         public async Task<IActionResult> DeleteTodoTask([FromBody] int id)
         {
             var command = new DeleteTodoTaskCommand(id);
+            await _sender.Send(command);
+            return Ok();
+        }
+
+        [HttpPut("update-task")]
+        public async Task<IActionResult> UpdateTodoTask([FromBody] UpdateTodoTaskDto updatedTodoTask)
+        {
+            var command = new UpdateTodoTaskCommand(updatedTodoTask);
             await _sender.Send(command);
             return Ok();
         }
