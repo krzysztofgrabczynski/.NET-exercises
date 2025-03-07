@@ -1,4 +1,4 @@
-﻿using CQRSTodoApp.Application.Exceptions.TodoTask;
+﻿using CQRSTodoApp.Domain.Exceptions.TodoTask;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
