@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CQRSTodoApp.Application.Dto.TodoTask;
+using CQRSTodoApp.Application.Exceptions.TodoTask;
 using CQRSTodoApp.Domain.Infrastructure;
 using MediatR;
 
@@ -20,7 +21,7 @@ namespace CQRSTodoApp.Application.Queries.TodoTask.GetTodoTask
             var todoTask = await _toDoTaskRepository.GetToDoTaskByIdAsync(request.Id);
             if (todoTask is null)
             {
-                throw new ArgumentException();
+                throw new TodoTaskNotFoundException(request.Id);
             }
 
             var mappedTodoTask = _mapper.Map<RetrieveTodoTaskDto>(todoTask);

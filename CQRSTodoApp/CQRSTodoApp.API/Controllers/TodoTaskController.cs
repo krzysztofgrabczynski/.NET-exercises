@@ -42,7 +42,7 @@ namespace CQRSTodoApp.API.Controllers
             await _sender.Send(command);
             return Ok();
         }
-
+        
         [HttpDelete("delete-task/{id}")]
         public async Task<IActionResult> DeleteTodoTask([FromBody] int id)
         {

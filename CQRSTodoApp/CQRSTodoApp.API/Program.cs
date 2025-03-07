@@ -1,3 +1,4 @@
+using CQRSTodoApp.API.Middlewares;
 using CQRSTodoApp.Application.Commands.TodoTask.CreateTodoTask;
 using CQRSTodoApp.Application.Mapping;
 using CQRSTodoApp.Domain.Infrastructure;
@@ -26,6 +27,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Global Exception Handler configuration
+builder.Services.AddExceptionHandler<GlobalExceptionHandlerMiddleware>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,6 +41,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseExceptionHandler();
 
 app.UseAuthorization();
 
